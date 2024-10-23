@@ -66,4 +66,4 @@ jobs:
         with:
           app-name: 'domotica-iot-fiee'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_17ABB4F29F534877A123D2762978604D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4657425AEF584FBDB73117B907B558BF }}
