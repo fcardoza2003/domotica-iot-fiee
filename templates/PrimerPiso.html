@@ -4,76 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <title>IOT-FIEE</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap 3.3.2 -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link rel="icon" href="../static/img/ICONO_FIEE.png" type="image/png">
 
-
     <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- AdminLTE Theme -->
-    <link href="../static/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <link href="../static/css/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <link href="../static/css/AdminLTE.min.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/_all-skins.min.css" rel="stylesheet" type="text/css">
 
     <style>
         body {
-            background-color: #ecf0f5; /* Color inicial del fondo */
-            color: #333333; /* Gris oscuro para el texto */
+            background-color: #ecf0f5;
+            color: #333;
         }
 
-        .main-header .logo {
-            background-color: #3c8dbc; /* Azul original */
-            color: #ffffff;
-        }
-
+        .main-header .logo,
         .main-header .navbar {
-            background-color: #3c8dbc; /* Azul original */
+            background-color: #3c8dbc;
+            color: #fff;
         }
 
         .sidebar {
-            background-color: #222d32; /* Gris oscuro original */
+            background-color: #222d32;
         }
 
-        .sidebar-menu > li.header {
-            color: #ffffff;
-            background-color: #1a2226; /* Gris muy oscuro */
+        .sidebar-menu>li.header {
+            color: #fff;
+            background-color: #1a2226;
         }
 
         .content-wrapper {
-            background-color: #ecf0f5; /* Color inicial del fondo */
-        }
-
-        .box-primary {
-            border-top-color: #3c8dbc; /* Azul original */
+            background-color: #ecf0f5;
         }
 
         .btn-default {
-            background-color: #d2d6de; /* Gris claro */
+            background-color: #d2d6de;
             color: #444;
-            font-size: 1em; /* Tamaño de fuente original */
-            padding: 6px 12px; /* Tamaño de botón original */
+            padding: 6px 12px;
         }
 
-        .user-panel > .info > a {
-            color: #ffffff;
+        .user-panel>.info>a,
+        .navbar-custom-menu .nav>li>a {
+            color: #fff;
         }
 
-        .navbar-custom-menu .nav > li > a {
-            color: #ffffff;
-        }
-
-        .sidebar-menu li.active > a {
-            background-color: #1e282c; /* Azul oscuro original */
-            color: #ffffff;
-        }
-
-        .sidebar-menu li > a:hover {
+        .sidebar-menu li.active>a,
+        .sidebar-menu li>a:hover {
             background-color: #1e282c;
-            color: #ffffff;
+            color: #fff;
         }
 
         .switch {
@@ -113,15 +96,14 @@
             border-radius: 50%;
         }
 
-        input:checked + .slider {
-            background-color: #3c8dbc; /* Azul original */
+        input:checked+.slider {
+            background-color: #3c8dbc;
         }
 
-        input:checked + .slider:before {
+        input:checked+.slider:before {
             transform: translateX(32px);
         }
 
-        /* Ajustes para los componentes del sensor */
         .control-section {
             margin: 20px 0;
         }
@@ -129,7 +111,7 @@
         .control-box {
             padding: 20px;
             border-radius: 10px;
-            background-color: #ffffff;
+            background-color: #fff;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
@@ -141,10 +123,11 @@
 
         #pir-status,
         #ldr-status {
-            background-color: #3c8dbc; /* Azul original */
-            color: #ffffff;
+            background-color: #3c8dbc;
+            color: #fff;
             font-size: 1.2em;
             padding: 10px;
+            text-align: center;
         }
     </style>
 </head>
@@ -153,7 +136,7 @@
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
-            <a href="http://domotica-iot-fiee.azurewebsites.net/inicio" class="logo"><b>Domótica</b>FIEE</a>
+            <a href="/inicio" class="logo"><b>Domótica</b>FIEE</a>
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Botón para mostrar/ocultar el menú lateral -->
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -173,7 +156,6 @@
                                 <li>
                                     <ul class="menu">
                                         <li><a href="#"><i class="fa fa-users text-aqua"></i> 5 nuevos miembros hoy</a></li>
-                                        <!-- Más ejemplos de notificaciones -->
                                     </ul>
                                 </li>
                                 <li class="footer"><a href="#">Ver todas</a></li>
@@ -182,16 +164,16 @@
                         <!-- Usuario -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="../static/img/USUARIO_FIEE.jpg" class="user-image" alt="User Image" />
+                                <img src="../static/img/USUARIO_FIEE.jpg" class="user-image" alt="User Image">
                                 <span class="hidden-xs">Edificio FIEE</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- Imagen del usuario -->
                                 <li class="user-header">
-                                    <img src="../static/img/USUARIO_FIEE.jpg" class="img-circle" alt="User Image" />
+                                    <img src="../static/img/USUARIO_FIEE.jpg" class="img-circle" alt="User Image">
                                     <p>Edificio FIEE <small>Desde abril 2024</small></p>
                                 </li>
-                                <!-- Opción de perfil y cierre de sesión -->
+                                <!-- Opcion de perfil y cierre de sesión -->
                                 <li class="user-footer">
                                     <div class="pull-left"><a href="#" class="btn btn-default btn-flat">Perfil</a></div>
                                     <div class="pull-right"><a href="#" class="btn btn-default btn-flat">Cerrar sesión</a></div>
@@ -209,7 +191,7 @@
                 <!-- Panel de usuario -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="../static/img/USUARIO_FIEE.jpg" class="img-circle" alt="User Image" />
+                        <img src="../static/img/USUARIO_FIEE.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>Edificio FIEE</p>
@@ -220,7 +202,7 @@
                 <!-- Buscador lateral -->
                 <form action="#" method="get" class="sidebar-form">
                     <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Buscar..." />
+                        <input type="text" name="q" class="form-control" placeholder="Buscar...">
                         <span class="input-group-btn">
                             <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
                         </span>
@@ -230,18 +212,18 @@
                 <!-- Menú lateral -->
                 <ul class="sidebar-menu">
                     <li class="header">NAVEGACIÓN PRINCIPAL</li>
-                    <li><a href="http://domotica-iot-fiee.azurewebsites.net/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                    <li><a href="/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                     <li class="treeview active">
                         <a href="#">
                             <i class="fa fa-pie-chart"></i> <span>Pisos</span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="active"><a href="http://domotica-iot-fiee.azurewebsites.net/PrimerPiso"><i class="fa fa-circle-o"></i>Primer Piso</a></li>
-                            <li><a href="http://domotica-iot-fiee.azurewebsites.net/SegundoPiso"><i class="fa fa-circle-o"></i>Segundo Piso</a></li>
-                            <li><a href="http://domotica-iot-fiee.azurewebsites.net/TercerPiso"><i class="fa fa-circle-o"></i>Tercer Piso</a></li>
+                            <li class="active"><a href="/PrimerPiso"><i class="fa fa-circle-o"></i>Primer Piso</a></li>
+                            <li><a href="/SegundoPiso"><i class="fa fa-circle-o"></i>Segundo Piso</a></li>
+                            <li><a href="/TercerPiso"><i class="fa fa-circle-o"></i>Tercer Piso</a></li>
                         </ul>
                     </li>
-                    <li><a href="http://domotica-iot-fiee.azurewebsites.net/Escenas"><i class="fa fa-laptop"></i> <span>Escenas</span></a></li>
+                    <li><a href="/Escenas"><i class="fa fa-laptop"></i> <span>Escenas</span></a></li>
                     <li><a href="../calendar.html"><i class="fa fa-calendar"></i> <span>Calendario</span><small class="label pull-right bg-red">3</small></a></li>
                     <li class="header">ETIQUETAS</li>
                     <li><a href="#"><i class="fa fa-circle-o text-danger"></i>Importante</a></li>
@@ -268,19 +250,19 @@
                             <input type="checkbox" id="led-switch">
                             <span class="slider round"></span>
                         </label>
-                        <p id="led-status-text" style="font-size: 1.2em;">Estado del LED: Cargando...</p>
+                        <p id="led-status-text">Estado del LED: Cargando...</p>
                     </div>
 
                     <!-- Estado del PIR -->
                     <div class="control-box">
                         <h4>Sensor PIR</h4>
-                        <div id="pir-status" style="height: 100px; line-height: 100px;">Cargando...</div>
+                        <div id="pir-status">Cargando...</div>
                     </div>
 
                     <!-- Estado del LDR -->
                     <div class="control-box">
                         <h4>Sensor LDR</h4>
-                        <div id="ldr-status" style="height: 100px; line-height: 100px;">Cargando...</div>
+                        <div id="ldr-status">Cargando...</div>
                     </div>
                 </div>
             </section>
