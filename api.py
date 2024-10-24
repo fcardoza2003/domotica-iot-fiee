@@ -12,10 +12,10 @@ CORS(app)
 def create_connection():
     try:
         connection = mysql.connector.connect(
-            host="localhost",  # Cambia a 'localhost' ya que ahora estás ejecutando la base de datos en la misma máquina
-            user="root",  # Usuario root
-            password="Focm24681012%/%",  # Contraseña de MySQL
-            database="db_iot"  # Nombre de la base de datos
+            host="server-sql-fiee.database.windows.net",
+            user="admin_iot",
+            password="Focm24681012",
+            database="iot_db"
         )
         if connection.is_connected():
             return connection
