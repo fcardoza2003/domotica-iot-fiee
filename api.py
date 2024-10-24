@@ -11,11 +11,12 @@ CORS(app)
 # Función para crear la conexión a la base de datos MySQL
 def create_connection():
     try:
-        connection = mysql.connector.connect(
-            host="server-sql-fiee.database.windows.net",
-            user="admin_iot",
-            password="Focm24681012",
-            database="iot_db"
+        connection = pyodbc.connect(
+    'DRIVER={ODBC Driver 17 for SQL Server};'
+    'SERVER=server-sql-fiee.database.windows.net;'
+    'DATABASE=iot_db;'
+    'UID=admin_iot;'
+    'PWD=Focm24681012'
         )
         if connection.is_connected():
             return connection
