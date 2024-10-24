@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, render_template, send_from_directory
-import mysql.connector
-from mysql.connector import Error
+import pyodbc
 from flask_cors import CORS  # Importa la librería Flask-CORS
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
@@ -8,19 +7,18 @@ app = Flask(__name__, static_folder='static', template_folder='templates')
 # Habilitar CORS para toda la aplicación
 CORS(app)
 
-# Función para crear la conexión a la base de datos MySQL
+# Función para crear la conexión a la base de datos SQL Server
 def create_connection():
     try:
         connection = pyodbc.connect(
-    'DRIVER={ODBC Driver 17 for SQL Server};'
-    'SERVER=server-sql-fiee.database.windows.net;'
-    'DATABASE=iot_db;'
-    'UID=admin_iot;'
-    'PWD=Focm24681012'
+            'DRIVER={ODBC Driver 17 for SQL Server};'
+            'SERVER=server-sql-fiee.database.windows.net;'
+            'DATABASE=iot_db;'
+            'UID=admin_iot;'
+            'PWD=Focm24681012'
         )
-        if connection.is_connected():
-            return connection
-    except Error as e:
+        return connection
+    except Exception as e:
         print(f"Error al conectar a la base de datos: {e}")
         return None
 
