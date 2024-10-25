@@ -59,14 +59,19 @@ def insert_data():
         mydb = create_connection()
         if mydb is None:
             return jsonify({"error": "Conexión a la base de datos no disponible"}), 500
-        
-        esp_id = request.form['esp_id']
-        pir_status = request.form.get('pir_status')
-        ldr_status = request.form.get('ldr_status')
-        nivel_agua = request.form.get('nivel_agua')
-        metal_detectado = request.form.get('metal_detectado')
-        temperatura = request.form.get('temperatura')
-        
+
+        # Obtener datos JSON del cuerpo de la solicitud
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "Faltan datos o formato JSON incorrecto"}), 400
+
+        esp_id = data.get('esp_id')
+        pir_status = data.get('pir_status')
+        ldr_status = data.get('ldr_status')
+        nivel_agua = data.get('nivel_agua')
+        metal_detectado = data.get('metal_detectado')
+        temperatura = data.get('temperatura')
+
         cursor = mydb.cursor()
 
         # Verificar si ya existe un registro con ese esp_id
@@ -93,7 +98,7 @@ def insert_data():
         mydb.commit()
         cursor.close()
         mydb.close()
-        return "Datos actualizados", 200
+        return jsonify({"message": "Datos actualizados con éxito"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -105,7 +110,7 @@ def get_latest_status():
         mydb = create_connection()
         if mydb is None:
             return jsonify({"error": "Conexión a la base de datos no disponible"}), 500
-        
+
         cursor = mydb.cursor()
         cursor.execute("""
         SELECT pir_status, ldr_status, nivel_agua, metal_detectado, temperatura 
@@ -133,29 +138,33 @@ def update_led():
         mydb = create_connection()
         if mydb is None:
             return jsonify({"error": "Conexión a la base de datos no disponible"}), 500
-        
-        led_status = request.form.get('led_status')
-        led1_status = request.form.get('led1_status')
-        led2_status = request.form.get('led2_status')
-        esp_id = request.form.get('esp_id')
+
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "Faltan datos o formato JSON incorrecto"}), 400
+
+        led_status = data.get('led_status')
+        led1_status = data.get('led1_status')
+        led2_status = data.get('led2_status')
+        esp_id = data.get('esp_id')
 
         cursor = mydb.cursor()
 
         # Actualizamos los estados de los LEDs
-        if led_status:
+        if led_status is not None:
             query_update_led = "UPDATE sensor_data SET led_status = ? WHERE esp_id = ?"
             cursor.execute(query_update_led, (led_status, esp_id))
-        if led1_status:
+        if led1_status is not None:
             query_update_led1 = "UPDATE sensor_data SET led1_status = ? WHERE esp_id = ?"
             cursor.execute(query_update_led1, (led1_status, esp_id))
-        if led2_status:
+        if led2_status is not None:
             query_update_led2 = "UPDATE sensor_data SET led2_status = ? WHERE esp_id = ?"
             cursor.execute(query_update_led2, (led2_status, esp_id))
 
         mydb.commit()
         cursor.close()
         mydb.close()
-        return "LED actualizado", 200
+        return jsonify({"message": "LED actualizado"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
